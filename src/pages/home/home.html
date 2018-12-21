@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Lista</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <form [formGroup]="person" #form="ngForm" (ngSubmit)="logForm(form)">
+     <ion-item>
+       <ion-label>Nome</ion-label>
+       <ion-input type="text" formControlName="nome" clearInput></ion-input>
+     </ion-item>
+     <button ion-button type="submit" [disabled]="!person.valid">Inserir</button>
+   </form>
+  
+   <ion-list class="lista-pessoas">
+     <ion-item-sliding *ngFor="let item of list">
+       <ion-item>{{ item.nome }}</ion-item>
+       <ion-item-options>
+         <button ion-button expandable (click)="logApagar(item)" icon-only>
+           <ion-icon name="trash"></ion-icon>Excluir
+         </button>
+       </ion-item-options>
+   </ion-item-sliding>
+  </ion-list>
+</ion-content>
